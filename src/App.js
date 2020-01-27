@@ -19,8 +19,8 @@ class App extends Component {
     .then((data) => {
       var json = parser.parse(data)
       console.log(json["rss"]["channel"]["item"])
-      this.setState({title: json["rss"]["channel"]["title"]})
-      this.setState({desc: json["rss"]["channel"]["description"]})
+      this.setState({title: json["rss"]["channel"]["title"].split(" - ")[0]})
+      this.setState({desc: json["rss"]["channel"]["description"].split(" - ")[0]})
       this.setState({articles: json["rss"]["channel"]["item"]})
     })
     .catch(err => {
